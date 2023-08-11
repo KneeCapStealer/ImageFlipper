@@ -7,4 +7,4 @@
 
 void InitSDL(SDL_Window** window, SDL_Renderer** renderer);
 
-void InitUI(Button* button1, Button* button2, SDL_Renderer* renderer, SDL_Texture** currentImage);
+void InitUI(Button(*buttons)[3], SDL_Renderer* renderer, bool* isFlipped, SDL_Texture** currentImage);

@@ -9,6 +9,8 @@ struct Button
     std::function<void()> func;
 };
 
-void CheckButtonClick(Button(&buttons)[2], SDL_Point point);
+void CheckButtonClick(Button (&buttons)[3], SDL_Point point);
 
-void DrawButtons(Button(&buttons)[2], SDL_Renderer* renderer);
+void DrawButtons(Button(&buttons)[3], SDL_Renderer* renderer);
+
+void RenderNewImage(SDL_Renderer* renderer, SDL_Texture* texture, bool isFlipped);

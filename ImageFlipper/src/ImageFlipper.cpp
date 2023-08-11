@@ -9,24 +9,23 @@ int main(int argc, char* args[])
 
     InitSDL(&window, &renderer);
 
-    SDL_Texture* currentImage = nullptr;
     Button imageButton1;
     Button imageButton2;
+    Button flipButton;
+    Button buttons[] = { imageButton1, imageButton2, flipButton };
 
-    InitUI(&imageButton1, &imageButton2, renderer, &currentImage);
+    bool isFlipped = false;
+    SDL_Texture* currentImage;
 
-    Button buttons[] = { imageButton1, imageButton2 };
+    InitUI(&buttons, renderer, &isFlipped, &currentImage);
+
+    SDL_SetRenderDrawColor(renderer, 185, 53, 45, 255);
+    SDL_RenderClear(renderer);
+    DrawButtons(buttons, renderer);
 
     bool running = true;
     while (running)
     {
-        SDL_SetRenderDrawColor(renderer, 185, 53, 45, 255);
-        SDL_RenderClear(renderer);
-        DrawButtons(buttons, renderer);
-        if (currentImage != nullptr)
-            if (SDL_RenderCopy(renderer, currentImage, NULL, NULL) != 0)
-                std::cout << "Error with RenderCopy: " << SDL_GetError() << std::endl;
-
         SDL_RenderPresent(renderer);
 
         SDL_Event event;
